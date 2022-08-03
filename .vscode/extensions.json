@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "formulahendry.auto-rename-tag",
-        "anseki.vscode-color"
+        "anseki.vscode-color",
+        "zignd.html-css-class-completion",
+        "MS-vsliveshare.vsliveshare"
     ]
 }
