@@ -5,6 +5,13 @@ import eliminarIcono from './eliminarIcono.js';
 (() => {
   //enlazamos el boton  y lo guardamos en una variable btn
   const btn = document.querySelector('[data-form-btn]');
+
+  const addTask = (evento) => {
+    const agregarLista = document.querySelector('[data-list]');
+    const tarea = createTask(evento);
+    agregarLista.appendChild(tarea);
+  };
+
   const createTask = (evento) => {
     //quitar por defecto  el evento de recargar la pagina
     evento.preventDefault();
@@ -23,13 +30,21 @@ import eliminarIcono from './eliminarIcono.js';
     tituloTarea.innerText = value;
     tareaContenido.appendChild(tituloTarea);
     //tarea.innerHTML = contenido;
+
+    //Agregar calentario
+    const calendario = document.querySelector('[data-for-date]');
+    const fecha = calendario.value;
+    const formatoFecha = moment(fecha).format('DD/MM/YYYY');
+    const dateElement = document.createElement('span');
+    dateElement.innerHTML = formatoFecha;
+
     tarea.appendChild(tareaContenido);
+    tarea.appendChild(dateElement);
     tarea.appendChild(eliminarIcono());
-    const agregarLista = document.querySelector('[data-list]');
-    agregarLista.appendChild(tarea);
+    return tarea;
   };
 
   //Arrow functions o funciones flechas o funciones anonimas =>
   //escuchar un evento --> click
-  btn.addEventListener('click', createTask);
+  btn.addEventListener('click', addTask);
 })();
