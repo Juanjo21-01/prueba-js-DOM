@@ -1,5 +1,5 @@
 import { addTask } from './agregarTarea.js';
-import { readTasks } from './leerTarea.js';
+import { displayTasks } from './leerTarea.js';
 //Inmediately Invoked Function Expression IIFE
 (() => {
   //enlazamos el boton  y lo guardamos en una variable btn
@@ -9,5 +9,5 @@ import { readTasks } from './leerTarea.js';
   //escuchar un evento --> click
   btn.addEventListener('click', addTask);
 
-  readTasks();
+  displayTasks();
 })();

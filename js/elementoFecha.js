@@ -1,7 +1,7 @@
 export default (fecha) => {
-  const elementoFecha = document.createElement('li');
-  elementoFecha.classList.add('date');
-  elementoFecha.innerHTML = fecha;
+  const dateElement = document.createElement('li');
+  dateElement.classList.add('date');
+  dateElement.innerHTML = fecha;
 
-  return elementoFecha;
+  return dateElement;
 };

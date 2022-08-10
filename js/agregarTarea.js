@@ -1,11 +1,11 @@
 import checkComplete from './seleccionarIcono.js';
 import eliminarIcono from './eliminarIcono.js';
-
+import { displayTasks } from './leerTarea.js';
 //Agregar tarea
 export const addTask = (evento) => {
   //quitar por defecto  el evento de recargar la pagina
   evento.preventDefault();
-  const agregarLista = document.querySelector('[data-list]');
+  const list = document.querySelector('[data-list]');
   const input = document.querySelector('[data-form-input]');
   //Agregar calentario
   const calendario = document.querySelector('[data-for-date]');
@@ -27,14 +27,15 @@ export const addTask = (evento) => {
     formatoFecha,
   };
 
+  list.innerHTML = '';
+
   //JSON.stringify <-- parseo de un json a string
   const taskList = JSON.parse(localStorage.getItem('tasks')) || [];
   taskList.push(taskObj);
   //JSON.stringify <-- parseo de un string a json
   localStorage.setItem('tasks', JSON.stringify(taskList));
 
-  const tarea = createTask(taskObj);
-  agregarLista.appendChild(tarea);
+  displayTasks();
 };
 
 export const createTask = ({ value, formatoFecha }) => {
