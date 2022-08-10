@@ -21,10 +21,15 @@ export const addTask = (evento) => {
 
   input.value = '';
   calendario.value = '';
+
+  //completar tarea
+  const complete = false;
   //guardar datos  en almacenamiento
   const taskObj = {
     value,
     formatoFecha,
+    complete,
+    id: uuid.v4(),
   };
 
   list.innerHTML = '';
@@ -38,7 +43,7 @@ export const addTask = (evento) => {
   displayTasks();
 };
 
-export const createTask = ({ value, formatoFecha }) => {
+export const createTask = ({ value, formatoFecha, complete, id }) => {
   const tarea = document.createElement('li');
   //le agregamos la clase
   tarea.classList.add('card');
@@ -46,10 +51,19 @@ export const createTask = ({ value, formatoFecha }) => {
   //backticks
   //volver dinamico el codigo html
   const tareaContenido = document.createElement('div');
+
+  //completar tarea
+  const check = checkComplete(id);
+  if (complete) {
+    check.classList.toggle('fas');
+    check.classList.toggle('completeIcon');
+    check.classList.toggle('far');
+  }
+
   const dateElement = document.createElement('span');
   dateElement.innerHTML = formatoFecha;
 
-  tareaContenido.appendChild(checkComplete());
+  tareaContenido.appendChild(check);
   const tituloTarea = document.createElement('span');
   tituloTarea.classList.add('task');
   tituloTarea.innerText = value;

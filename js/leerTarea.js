@@ -1,11 +1,12 @@
 import { createTask } from './agregarTarea.js';
 import dateElement from './elementoFecha.js';
-import { unicaFecha } from './servicios/fecha.js';
+import { unicaFecha, orderDates } from './servicios/fecha.js';
 //Leer tarea
 export const displayTasks = () => {
   const list = document.querySelector('[data-list]');
   const taskList = JSON.parse(localStorage.getItem('tasks')) || [];
   const dates = unicaFecha(taskList);
+  orderDates(dates);
 
   dates.forEach((date) => {
     const dateMoment = moment(date, 'DD/MM/YYYY');
