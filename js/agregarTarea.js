@@ -72,6 +72,6 @@ export const createTask = ({ value, formatoFecha, complete, id }) => {
 
   tarea.appendChild(tareaContenido);
   tarea.appendChild(dateElement);
-  tarea.appendChild(eliminarIcono());
+  tarea.appendChild(eliminarIcono(id));
   return tarea;
 };
